@@ -13,12 +13,23 @@ export class MainComponentComponent {
   bitLength: number = 32;
   endianFormat: string = 'big';
   binaryValue: string = '';
+  reversedIndices: number[] = [];
+  constructor() {
+    // this.calculateReverseIndices();
+  }
+
+  calculateReverseIndices() {
+    this.reversedIndices = Array.from({ length: this.binaryValue.length }, (_, i) =>
+      this.binaryValue.length - 1 - i
+    );
+  }
 
   // Update binary value based on input
   updateBinaryValue(event: Event): void {
     const input = (event.target as HTMLInputElement).value;
     this.inputNumber = input;
     this.convertToBinary();
+    this.calculateReverseIndices();
   }
 
   // Change bit length

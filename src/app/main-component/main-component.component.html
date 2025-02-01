@@ -40,16 +40,32 @@
   </div>
 
   <!-- Binary Value Display -->
+  <!-- <div class="binary-boxes">
+    <div *ngFor="let bit of binaryValue.split(''); let i = index" class="binary-box-container">
+      <div
+        [ngClass]="{
+          'binary-box': true,
+          'binary-box-green': bit === '1',
+          'binary-box-gray': bit === '0'
+        }"
+      >
+        {{ bit }}
+      </div>
+      <div class="binary-index">Bit {{ i }}</div>
+  </div> -->
   <div class="binary-boxes">
-    <div
-      *ngFor="let bit of binaryValue.split(''); let i = index"
-      [ngClass]="{
-        'binary-box': true,
-        'binary-box-green': bit === '1',
-        'binary-box-gray': bit === '0'
-      }"
-    >
-      {{ bit }}
+    <div *ngFor="let bit of binaryValue.split(''); let i = index" class="binary-box-container">
+      <div
+        [ngClass]="{
+          'binary-box': true,
+          'binary-box-green': bit === '1',
+          'binary-box-gray': bit === '0'
+        }"
+      >
+        {{ bit }}
+      </div>
+      <div class="binary-index">Bit {{ reversedIndices[i] }}</div>
     </div>
   </div>
+  
 </div>
