@@ -1,0 +1,55 @@
+<div class="main-content">
+  <!-- Input Number -->
+  <div class="form-group">
+    <label for="inputNumber">Enter a Number:</label>
+    <input
+      id="inputNumber"
+      type="text"
+      class="form-control"
+      placeholder="Enter a number (e.g., 255, 0xFF)"
+      (input)="updateBinaryValue($event)"
+    />
+  </div>
+
+  <!-- Bit Length Selection -->
+  <div class="form-group">
+    <label for="bitLength">Select Bit Length:</label>
+    <select
+      id="bitLength"
+      class="form-control"
+      (change)="changeBitLength($event)"
+    >
+      <option value="8">8-bit</option>
+      <option value="16">16-bit</option>
+      <option value="32" selected>32-bit</option>
+      <option value="64">64-bit</option>
+    </select>
+  </div>
+
+  <!-- Endian Format Selection -->
+  <div class="form-group">
+    <label for="endianFormat">Select Endian Format:</label>
+    <select
+      id="endianFormat"
+      class="form-control"
+      (change)="changeEndianFormat($event)"
+    >
+      <option value="big" selected>Big Endian</option>
+      <option value="little">Little Endian</option>
+    </select>
+  </div>
+
+  <!-- Binary Value Display -->
+  <div class="binary-boxes">
+    <div
+      *ngFor="let bit of binaryValue.split(''); let i = index"
+      [ngClass]="{
+        'binary-box': true,
+        'binary-box-green': bit === '1',
+        'binary-box-gray': bit === '0'
+      }"
+    >
+      {{ bit }}
+    </div>
+  </div>
+</div>
